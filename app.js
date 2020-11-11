@@ -19,3 +19,24 @@ window.addEventListener('load', function() {
             .catch(error => console.log('There was an error: ' + error));
     });
 });
+
+
+$(document).ready(function(){
+    $('#searchdata').click(function(e){
+        e.preventDefault();
+        var id = $('input[name = ID]').val();
+        $.ajax({
+            type: "POST",
+            url: "superheroes.php",
+            data: {
+                "search_post_btn":1,
+                "id": ID,
+            },
+            dataType:"text",
+            success: function(response){
+                $("#searchform").html(response);
+            }
+
+        });
+    });
+});
